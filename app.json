@@ -3,8 +3,15 @@
     "name": "Null Pint",
     "slug": "null-pint",
     "version": "0.1.0",
+    "scheme": "nullpint",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
     "orientation": "portrait",
     "userInterfaceStyle": "light",
+    "updates": {
+      "url": "https://u.expo.dev/aa222a0b-2cb1-4b5c-8437-01b20b2f5929"
+    },
     "splash": {
       "resizeMode": "contain",
       "backgroundColor": "#f7f4ee"
@@ -18,6 +25,15 @@
     },
     "android": {
       "package": "com.example.nullpint"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "aa222a0b-2cb1-4b5c-8437-01b20b2f5929"
+      }
+    },
+    "owner": "david.braden.yum",
+    "plugins": [
+      "expo-status-bar"
+    ]
   }
 }
