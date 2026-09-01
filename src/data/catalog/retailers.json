@@ -1,0 +1,34 @@
+[
+  {
+    "id": "the-alcohol-free-co",
+    "name": "The Alcohol Free Co",
+    "website": "https://thealcoholfreeco.co.uk",
+    "host": "thealcoholfreeco.co.uk",
+    "country": "UK",
+    "description": "UK online specialist in alcohol-free beer, wine and spirits."
+  },
+  {
+    "id": "wise-bartender",
+    "name": "Wise Bartender",
+    "website": "https://www.wisebartender.co.uk",
+    "host": "www.wisebartender.co.uk",
+    "country": "UK",
+    "description": "UK alcohol-free drinks retailer with a broad independent brewery range."
+  },
+  {
+    "id": "dry-drinker",
+    "name": "Dry Drinker",
+    "website": "https://www.drydrinker.com",
+    "host": "www.drydrinker.com",
+    "country": "UK",
+    "description": "UK alcohol-free and low-alcohol drinks shop."
+  },
+  {
+    "id": "ocado",
+    "name": "Ocado",
+    "website": "https://www.ocado.com",
+    "host": "www.ocado.com",
+    "country": "UK",
+    "description": "UK online supermarket stocking mainstream alcohol-free beers."
+  }
+]

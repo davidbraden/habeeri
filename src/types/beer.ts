@@ -1,5 +1,14 @@
 import { ImageSourcePropType } from 'react-native';
 
+export type Retailer = {
+  id: string;
+  name: string;
+  website: string;
+  host: string;
+  country: string;
+  description: string;
+};
+
 export type BeerCatalogItem = {
   id: string;
   numericId: number;
@@ -13,6 +22,7 @@ export type BeerCatalogItem = {
   localImage: ImageSourcePropType;
   sourceUrl: string;
   retailer: string;
+  retailerId: string;
   availability: string;
   imageFile: string;
 };

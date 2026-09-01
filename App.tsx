@@ -1,7 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { useMemo, useState } from 'react';
 import {
+  FlatList,
   Image,
+  Linking,
   Pressable,
   SafeAreaView,
   ScrollView,
@@ -16,6 +18,8 @@ import { sampleBeers } from './src/data/sampleBeers';
 import { Beer } from './src/types/beer';
 
 type FilterMode = 'all' | 'tried' | 'untried';
+
+const ratingStars = [1, 2, 3, 4, 5];
 
 export default function App() {
   const [beers, setBeers] = useState<Beer[]>(sampleBeers);
@@ -88,12 +92,21 @@ export default function App() {
                   <Text style={styles.infoChipText}>{selectedBeer.package}</Text>
                 </View>
                 <View style={styles.infoChip}>
-                  <Text style={styles.infoChipText}>{selectedBeer.retailer}</Text>
-                </View>
-                <View style={styles.infoChip}>
                   <Text style={styles.infoChipText}>{selectedBeer.availability}</Text>
                 </View>
               </View>
+
+              <Pressable
+                accessibilityRole="link"
+                accessibilityLabel={`Open ${selectedBeer.name} on ${selectedBeer.retailer}`}
+                onPress={() => Linking.openURL(selectedBeer.sourceUrl)}
+                style={styles.sourceLink}
+              >
+                <Text style={styles.sourceLinkText}>View on {selectedBeer.retailer} ↗</Text>
+                <Text style={styles.sourceLinkUrl} numberOfLines={1}>
+                  {selectedBeer.sourceUrl}
+                </Text>
+              </Pressable>
             </View>
           </View>
 
@@ -196,55 +209,64 @@ export default function App() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar style="dark" />
-      <ScrollView contentContainerStyle={styles.container}>
-        <View style={styles.topBar}>
-          <Text style={styles.title}>Null Pint</Text>
-          <Text style={styles.resultsText}>{filteredBeers.length} beers</Text>
-        </View>
+      <FlatList
+        data={filteredBeers}
+        keyExtractor={(beer) => beer.id}
+        numColumns={2}
+        contentContainerStyle={styles.container}
+        columnWrapperStyle={styles.listRow}
+        initialNumToRender={10}
+        windowSize={5}
+        removeClippedSubviews
+        renderItem={({ item }) => (
+          <BeerCard beer={item} onPress={() => setSelectedBeerId(item.id)} />
+        )}
+        ListHeaderComponent={
+          <View>
+            <View style={styles.topBar}>
+              <Text style={styles.title}>Null Pint</Text>
+              <Text style={styles.resultsText}>{filteredBeers.length} beers</Text>
+            </View>
 
-        <View style={styles.controlsCard}>
-          <TextInput
-            placeholder="Search beers"
-            placeholderTextColor="#9ca3af"
-            style={styles.searchInput}
-            value={query}
-            onChangeText={setQuery}
-          />
+            <View style={styles.controlsCard}>
+              <TextInput
+                placeholder="Search beers"
+                placeholderTextColor="#9ca3af"
+                style={styles.searchInput}
+                value={query}
+                onChangeText={setQuery}
+              />
 
-          <View style={styles.filterRow}>
-            {(['all', 'tried', 'untried'] as FilterMode[]).map((option) => {
-              const active = option === filter;
-              const label = option === 'all' ? 'All' : option === 'tried' ? 'Drunk' : 'To try';
-              return (
-                <Pressable
-                  key={option}
-                  accessibilityRole="button"
-                  onPress={() => setFilter(option)}
-                  style={[styles.filterChip, active && styles.filterChipActive]}
-                >
-                  <Text style={[styles.filterChipText, active && styles.filterChipTextActive]}>{label}</Text>
-                </Pressable>
-              );
-            })}
+              <View style={styles.filterRow}>
+                {(['all', 'tried', 'untried'] as FilterMode[]).map((option) => {
+                  const active = option === filter;
+                  const label = option === 'all' ? 'All' : option === 'tried' ? 'Drunk' : 'To try';
+                  return (
+                    <Pressable
+                      key={option}
+                      accessibilityRole="button"
+                      onPress={() => setFilter(option)}
+                      style={[styles.filterChip, active && styles.filterChipActive]}
+                    >
+                      <Text style={[styles.filterChipText, active && styles.filterChipTextActive]}>{label}</Text>
+                    </Pressable>
+                  );
+                })}
+              </View>
+
+              <View style={styles.toggleRowInline}>
+                <Text style={styles.toggleInlineTitle}>Only rated</Text>
+                <Switch
+                  value={onlyRated}
+                  onValueChange={setOnlyRated}
+                  trackColor={{ false: '#d1d5db', true: '#fcd34d' }}
+                  thumbColor="#ffffff"
+                />
+              </View>
+            </View>
           </View>
-
-          <View style={styles.toggleRowInline}>
-            <Text style={styles.toggleInlineTitle}>Only rated</Text>
-            <Switch
-              value={onlyRated}
-              onValueChange={setOnlyRated}
-              trackColor={{ false: '#d1d5db', true: '#fcd34d' }}
-              thumbColor="#ffffff"
-            />
-          </View>
-        </View>
-
-        <View style={styles.list}>
-          {filteredBeers.map((beer) => (
-            <BeerCard key={beer.id} beer={beer} onPress={() => setSelectedBeerId(beer.id)} />
-          ))}
-        </View>
-      </ScrollView>
+        }
+      />
     </SafeAreaView>
   );
 }
@@ -326,11 +348,10 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#6b7280',
   },
-  list: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+  listRow: {
     justifyContent: 'space-between',
     gap: 12,
+    marginBottom: 12,
   },
   backButton: {
     alignSelf: 'flex-start',
@@ -424,6 +445,24 @@ const styles = StyleSheet.create({
   infoChipText: {
     fontSize: 12,
     color: '#374151',
+  },
+  sourceLink: {
+    borderWidth: 1,
+    borderColor: '#c7d2fe',
+    backgroundColor: '#eef2ff',
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    gap: 3,
+  },
+  sourceLinkText: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#3730a3',
+  },
+  sourceLinkUrl: {
+    fontSize: 11,
+    color: '#6366f1',
   },
   editorCard: {
     backgroundColor: '#fff',
