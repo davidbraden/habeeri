@@ -12,7 +12,7 @@ export function BeerCard({ beer, onPress }: BeerCardProps) {
   return (
     <Pressable accessibilityRole="button" onPress={onPress} style={styles.card}>
       <View style={styles.imageWrap}>
-        <Image source={{ uri: beer.localImageUri }} style={styles.image} resizeMode="contain" />
+        <Image source={beer.localImage} style={styles.image} resizeMode="contain" />
         <View style={[styles.drunkBadge, beer.log.drunk ? styles.drunkBadgeDone : styles.drunkBadgeTodo]}>
           <Text style={[styles.drunkBadgeText, beer.log.drunk ? styles.drunkBadgeTextDone : styles.drunkBadgeTextTodo]}>
             {beer.log.drunk ? 'Drunk' : 'To try'}

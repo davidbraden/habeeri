@@ -68,7 +68,7 @@ export default function App() {
 
           <View style={styles.detailCard}>
             <View style={styles.detailImageWrap}>
-              <Image source={{ uri: selectedBeer.localImageUri }} style={styles.detailImage} resizeMode="contain" />
+              <Image source={selectedBeer.localImage} style={styles.detailImage} resizeMode="contain" />
             </View>
 
             <View style={styles.detailBody}>
