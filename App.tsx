@@ -15,8 +15,6 @@ import { BeerCard } from './src/components/BeerCard';
 import { sampleBeers } from './src/data/sampleBeers';
 import { Beer } from './src/types/beer';
 
-const ratingStars = [1, 2, 3, 4, 5];
-
 type FilterMode = 'all' | 'tried' | 'untried';
 
 export default function App() {
@@ -48,10 +46,7 @@ export default function App() {
     });
   }, [beers, filter, onlyRated, query]);
 
-  const triedCount = beers.filter((beer) => beer.log.drunk).length;
-  const ratedCount = beers.filter((beer) => beer.log.rating > 0).length;
-
-  const updateBeer = (updatedBeer: Beer) => {
+    const updateBeer = (updatedBeer: Beer) => {
     setBeers((currentBeers) =>
       currentBeers.map((beer) => (beer.id === updatedBeer.id ? updatedBeer : beer)),
     );
@@ -202,31 +197,14 @@ export default function App() {
     <SafeAreaView style={styles.safeArea}>
       <StatusBar style="dark" />
       <ScrollView contentContainerStyle={styles.container}>
-        <View style={styles.header}>
+        <View style={styles.topBar}>
           <Text style={styles.title}>Null Pint</Text>
-          <Text style={styles.subtitle}>
-            Explore the real alcohol-free beer catalog, track what you’ve tried, and keep tasting notes.
-          </Text>
-        </View>
-
-        <View style={styles.summaryCard}>
-          <View style={styles.summaryMetric}>
-            <Text style={styles.summaryMetricValue}>{beers.length}</Text>
-            <Text style={styles.summaryMetricLabel}>Beers</Text>
-          </View>
-          <View style={styles.summaryMetric}>
-            <Text style={styles.summaryMetricValue}>{triedCount}</Text>
-            <Text style={styles.summaryMetricLabel}>Tried</Text>
-          </View>
-          <View style={styles.summaryMetric}>
-            <Text style={styles.summaryMetricValue}>{ratedCount}</Text>
-            <Text style={styles.summaryMetricLabel}>Rated</Text>
-          </View>
+          <Text style={styles.resultsText}>{filteredBeers.length} beers</Text>
         </View>
 
         <View style={styles.controlsCard}>
           <TextInput
-            placeholder="Search by beer, brewery, style…"
+            placeholder="Search beers"
             placeholderTextColor="#9ca3af"
             style={styles.searchInput}
             value={query}
@@ -251,10 +229,7 @@ export default function App() {
           </View>
 
           <View style={styles.toggleRowInline}>
-            <View>
-              <Text style={styles.toggleInlineTitle}>Only rated</Text>
-              <Text style={styles.toggleInlineHint}>Hide anything you haven’t scored yet.</Text>
-            </View>
+            <Text style={styles.toggleInlineTitle}>Only rated</Text>
             <Switch
               value={onlyRated}
               onValueChange={setOnlyRated}
@@ -263,8 +238,6 @@ export default function App() {
             />
           </View>
         </View>
-
-        <Text style={styles.resultsText}>{filteredBeers.length} beers shown</Text>
 
         <View style={styles.list}>
           {filteredBeers.map((beer) => (
@@ -282,74 +255,48 @@ const styles = StyleSheet.create({
     backgroundColor: '#f7f4ee',
   },
   container: {
-    padding: 20,
-    gap: 16,
-    paddingBottom: 32,
-  },
-  header: {
-    gap: 8,
-    marginTop: 12,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: '700',
-    color: '#1f2937',
-  },
-  subtitle: {
-    fontSize: 16,
-    lineHeight: 22,
-    color: '#4b5563',
-  },
-  summaryCard: {
-    backgroundColor: '#fff',
-    borderRadius: 18,
     padding: 16,
-    borderWidth: 1,
-    borderColor: '#e5e7eb',
+    gap: 12,
+    paddingBottom: 24,
+  },
+  topBar: {
+    marginTop: 6,
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
     gap: 12,
   },
-  summaryMetric: {
-    flex: 1,
-    alignItems: 'center',
-    gap: 4,
-  },
-  summaryMetricValue: {
-    fontSize: 28,
+  title: {
+    fontSize: 24,
     fontWeight: '700',
-    color: '#111827',
-  },
-  summaryMetricLabel: {
-    fontSize: 13,
-    color: '#6b7280',
+    color: '#1f2937',
   },
   controlsCard: {
     backgroundColor: '#fff',
-    borderRadius: 18,
-    padding: 16,
+    borderRadius: 16,
+    padding: 12,
     borderWidth: 1,
     borderColor: '#e5e7eb',
-    gap: 14,
+    gap: 8,
   },
   searchInput: {
     borderWidth: 1,
     borderColor: '#d1d5db',
     borderRadius: 12,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    fontSize: 15,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    fontSize: 13,
     color: '#111827',
     backgroundColor: '#fcfcfd',
   },
   filterRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 10,
+    gap: 8,
   },
   filterChip: {
-    paddingHorizontal: 14,
-    paddingVertical: 9,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
     borderRadius: 999,
     backgroundColor: '#f3f4f6',
   },
@@ -357,7 +304,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#111827',
   },
   filterChipText: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: '600',
     color: '#374151',
   },
@@ -371,21 +318,19 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   toggleInlineTitle: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: '600',
     color: '#111827',
   },
-  toggleInlineHint: {
-    fontSize: 13,
-    color: '#6b7280',
-    marginTop: 2,
-  },
   resultsText: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#6b7280',
   },
   list: {
-    gap: 14,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    gap: 12,
   },
   backButton: {
     alignSelf: 'flex-start',
@@ -421,7 +366,7 @@ const styles = StyleSheet.create({
   },
   detailBody: {
     padding: 18,
-    gap: 14,
+    gap: 10,
   },
   detailHeader: {
     gap: 12,
