@@ -31,9 +31,6 @@
         "projectId": "aa222a0b-2cb1-4b5c-8437-01b20b2f5929"
       }
     },
-    "owner": "david.braden.yum",
-    "plugins": [
-      "expo-status-bar"
-    ]
+    "owner": "david.braden.yum"
   }
 }
