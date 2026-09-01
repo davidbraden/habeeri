@@ -9,6 +9,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
+    "catalog:pull": "node scripts/catalog/pull.mjs",
+    "catalog:merge": "node scripts/catalog/merge.mjs",
+    "catalog:build": "node scripts/catalog/pull.mjs && node scripts/catalog/merge.mjs",
     "share:login": "eas login",
     "share:init": "eas project:init",
     "share:publish": "./node_modules/.bin/eas update --branch production"

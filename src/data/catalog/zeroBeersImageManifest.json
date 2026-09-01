@@ -1984,5 +1984,185 @@
     "name": "Zeven Zonden Avaritia Low Alcohol Belgian Blond",
     "imageFile": "331-zeven-zonden-avaritia-low-alcohol-belgian-blond.png",
     "bundledImage": "assets/beer-images/331-zeven-zonden-avaritia-low-alcohol-belgian-blond.png"
+  },
+  {
+    "id": 332,
+    "name": "Ambar Triple Zero",
+    "imageFile": "332-ambar-triple-zero.jpg",
+    "bundledImage": "assets/beer-images/332-ambar-triple-zero.jpg"
+  },
+  {
+    "id": 333,
+    "name": "Bavaria",
+    "imageFile": "333-bavaria.jpeg",
+    "bundledImage": "assets/beer-images/333-bavaria.jpeg"
+  },
+  {
+    "id": 334,
+    "name": "Beavertown Satellite Super Session IPA",
+    "imageFile": "334-beavertown-satellite-super-session-ipa.jpg",
+    "bundledImage": "assets/beer-images/334-beavertown-satellite-super-session-ipa.jpg"
+  },
+  {
+    "id": 335,
+    "name": "Big Drop Pale Ale",
+    "imageFile": "335-big-drop-pale-ale.jpg",
+    "bundledImage": "assets/beer-images/335-big-drop-pale-ale.jpg"
+  },
+  {
+    "id": 336,
+    "name": "Bitburger Premium Pils",
+    "imageFile": "336-bitburger-premium-pils.jpg",
+    "bundledImage": "assets/beer-images/336-bitburger-premium-pils.jpg"
+  },
+  {
+    "id": 337,
+    "name": "BrewDog Hazy Jane New England IPA",
+    "imageFile": "337-brewdog-hazy-jane-new-england-ipa.jpg",
+    "bundledImage": "assets/beer-images/337-brewdog-hazy-jane-new-england-ipa.jpg"
+  },
+  {
+    "id": 338,
+    "name": "BrewDog Hazy NEIPA",
+    "imageFile": "338-brewdog-hazy-neipa.jpg",
+    "bundledImage": "assets/beer-images/338-brewdog-hazy-neipa.jpg"
+  },
+  {
+    "id": 339,
+    "name": "Clausthaler Lager",
+    "imageFile": "339-clausthaler-lager.jpg",
+    "bundledImage": "assets/beer-images/339-clausthaler-lager.jpg"
+  },
+  {
+    "id": 340,
+    "name": "Clausthaler Lemon Citrus Radler",
+    "imageFile": "340-clausthaler-lemon-citrus-radler.jpg",
+    "bundledImage": "assets/beer-images/340-clausthaler-lemon-citrus-radler.jpg"
+  },
+  {
+    "id": 341,
+    "name": "Desperados Lemon Lager with Citrus Flavour",
+    "imageFile": "341-desperados-lemon-lager-with-citrus-flavour.jpg",
+    "bundledImage": "assets/beer-images/341-desperados-lemon-lager-with-citrus-flavour.jpg"
+  },
+  {
+    "id": 342,
+    "name": "Estrella Damm Barcelona",
+    "imageFile": "342-estrella-damm-barcelona.jpg",
+    "bundledImage": "assets/beer-images/342-estrella-damm-barcelona.jpg"
+  },
+  {
+    "id": 343,
+    "name": "Heineken Lemon Elderflower Flavoured",
+    "imageFile": "343-heineken-lemon-elderflower-flavoured.jpeg",
+    "bundledImage": "assets/beer-images/343-heineken-lemon-elderflower-flavoured.jpeg"
+  },
+  {
+    "id": 344,
+    "name": "Heineken Nectarine Juniper Flavoured",
+    "imageFile": "344-heineken-nectarine-juniper-flavoured.jpeg",
+    "bundledImage": "assets/beer-images/344-heineken-nectarine-juniper-flavoured.jpeg"
+  },
+  {
+    "id": 345,
+    "name": "Iguana Gym",
+    "imageFile": "345-iguana-gym.jpg",
+    "bundledImage": "assets/beer-images/345-iguana-gym.jpg"
+  },
+  {
+    "id": 346,
+    "name": "Infinite Session IPA",
+    "imageFile": "346-infinite-session-ipa.jpg",
+    "bundledImage": "assets/beer-images/346-infinite-session-ipa.jpg"
+  },
+  {
+    "id": 347,
+    "name": "Kasteel Rouge Cherry",
+    "imageFile": "347-kasteel-rouge-cherry.png",
+    "bundledImage": "assets/beer-images/347-kasteel-rouge-cherry.png"
+  },
+  {
+    "id": 348,
+    "name": "Lucky Saint Superior Lemon Lager",
+    "imageFile": "348-lucky-saint-superior-lemon-lager.jpg",
+    "bundledImage": "assets/beer-images/348-lucky-saint-superior-lemon-lager.jpg"
+  },
+  {
+    "id": 349,
+    "name": "Lucky Saint Superior Unfiltered Lager",
+    "imageFile": "349-lucky-saint-superior-unfiltered-lager.jpg",
+    "bundledImage": "assets/beer-images/349-lucky-saint-superior-unfiltered-lager.jpg"
+  },
+  {
+    "id": 350,
+    "name": "M&S British Craft Lager",
+    "imageFile": "350-m-s-british-craft-lager.jpg",
+    "bundledImage": "assets/beer-images/350-m-s-british-craft-lager.jpg"
+  },
+  {
+    "id": 351,
+    "name": "M&S Czech Lager",
+    "imageFile": "351-m-s-czech-lager.jpg",
+    "bundledImage": "assets/beer-images/351-m-s-czech-lager.jpg"
+  },
+  {
+    "id": 352,
+    "name": "M&S Peachy Pale Ale",
+    "imageFile": "352-m-s-peachy-pale-ale.jpg",
+    "bundledImage": "assets/beer-images/352-m-s-peachy-pale-ale.jpg"
+  },
+  {
+    "id": 353,
+    "name": "Peroni Beer with Lemon",
+    "imageFile": "353-peroni-beer-with-lemon.jpg",
+    "bundledImage": "assets/beer-images/353-peroni-beer-with-lemon.jpg"
+  },
+  {
+    "id": 354,
+    "name": "San Miguel Especial Lager",
+    "imageFile": "354-san-miguel-especial-lager.jpeg",
+    "bundledImage": "assets/beer-images/354-san-miguel-especial-lager.jpeg"
+  },
+  {
+    "id": 355,
+    "name": "Small Beer Hazy IPA",
+    "imageFile": "355-small-beer-hazy-ipa.jpg",
+    "bundledImage": "assets/beer-images/355-small-beer-hazy-ipa.jpg"
+  },
+  {
+    "id": 356,
+    "name": "Small Beer Session Pale",
+    "imageFile": "356-small-beer-session-pale.jpg",
+    "bundledImage": "assets/beer-images/356-small-beer-session-pale.jpg"
+  },
+  {
+    "id": 357,
+    "name": "St Omer Shandy",
+    "imageFile": "357-st-omer-shandy.jpg",
+    "bundledImage": "assets/beer-images/357-st-omer-shandy.jpg"
+  },
+  {
+    "id": 358,
+    "name": "Tiny Rebel Clwb Tropican IPA",
+    "imageFile": "358-tiny-rebel-clwb-tropican-ipa.jpg",
+    "bundledImage": "assets/beer-images/358-tiny-rebel-clwb-tropican-ipa.jpg"
+  },
+  {
+    "id": 359,
+    "name": "VETO PAUSE Vegan Lager",
+    "imageFile": "359-veto-pause-vegan-lager.jpg",
+    "bundledImage": "assets/beer-images/359-veto-pause-vegan-lager.jpg"
+  },
+  {
+    "id": 360,
+    "name": "VETO PLAY Lager with Caffeine",
+    "imageFile": "360-veto-play-lager-with-caffeine.jpg",
+    "bundledImage": "assets/beer-images/360-veto-play-lager-with-caffeine.jpg"
+  },
+  {
+    "id": 361,
+    "name": "Zeer Brewing Nina Heavy Nuanced IPA",
+    "imageFile": "361-zeer-brewing-nina-heavy-nuanced-ipa.jpg",
+    "bundledImage": "assets/beer-images/361-zeer-brewing-nina-heavy-nuanced-ipa.jpg"
   }
 ]

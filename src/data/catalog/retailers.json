@@ -30,5 +30,45 @@
     "host": "www.ocado.com",
     "country": "UK",
     "description": "UK online supermarket stocking mainstream alcohol-free beers."
+  },
+  {
+    "id": "tesco",
+    "name": "Tesco",
+    "website": "https://www.tesco.com",
+    "host": "www.tesco.com",
+    "country": "UK",
+    "description": "UK supermarket with a mainstream alcohol-free beer range."
+  },
+  {
+    "id": "sainsburys",
+    "name": "Sainsbury's",
+    "website": "https://www.sainsburys.co.uk",
+    "host": "www.sainsburys.co.uk",
+    "country": "UK",
+    "description": "UK supermarket with a low and no alcohol beer range."
+  },
+  {
+    "id": "asda",
+    "name": "Asda",
+    "website": "https://groceries.asda.com",
+    "host": "groceries.asda.com",
+    "country": "UK",
+    "description": "UK supermarket with a low and no alcohol beer range."
+  },
+  {
+    "id": "morrisons",
+    "name": "Morrisons",
+    "website": "https://groceries.morrisons.com",
+    "host": "groceries.morrisons.com",
+    "country": "UK",
+    "description": "UK supermarket with a low and no alcohol beer range."
+  },
+  {
+    "id": "waitrose",
+    "name": "Waitrose",
+    "website": "https://www.waitrose.com",
+    "host": "www.waitrose.com",
+    "country": "UK",
+    "description": "UK supermarket with a low and no alcohol beer range."
   }
 ]
