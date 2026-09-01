@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "Null Pint",
+    "slug": "null-pint",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#f7f4ee"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.nullpint"
+    },
+    "android": {
+      "package": "com.example.nullpint"
+    }
+  }
+}
