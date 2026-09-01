@@ -1,0 +1,344 @@
+[
+  {
+    "id": 1,
+    "name": "Aigua de Moritz 0.0",
+    "imageFile": "01-aigua-de-moritz-0-0.png",
+    "bundledImage": "assets/beer-images/01-aigua-de-moritz-0-0.png"
+  },
+  {
+    "id": 2,
+    "name": "Asahi Super Dry 0.0",
+    "imageFile": "02-asahi-super-dry-0-0.png",
+    "bundledImage": "assets/beer-images/02-asahi-super-dry-0-0.png"
+  },
+  {
+    "id": 3,
+    "name": "Athletic Brewing Co Alcohol-Free Lager",
+    "imageFile": "03-athletic-brewing-co-alcohol-free-lager.png",
+    "bundledImage": null
+  },
+  {
+    "id": 4,
+    "name": "Athletic Brewing Co Free Wave Hazy IPA Alcohol Free",
+    "imageFile": "04-athletic-brewing-co-free-wave-hazy-ipa-alcohol-free.png",
+    "bundledImage": null
+  },
+  {
+    "id": 5,
+    "name": "Athletic Brewing Co Run Wild IPA Alcohol Free",
+    "imageFile": "05-athletic-brewing-co-run-wild-ipa-alcohol-free.png",
+    "bundledImage": null
+  },
+  {
+    "id": 6,
+    "name": "Athletic Brewing Co Upside Dawn Pale Ale Alcohol Free",
+    "imageFile": "06-athletic-brewing-co-upside-dawn-pale-ale-alcohol-free.png",
+    "bundledImage": null
+  },
+  {
+    "id": 7,
+    "name": "Beavertown Lazer Crush 0.3%",
+    "imageFile": "07-beavertown-lazer-crush-0-3.png",
+    "bundledImage": null
+  },
+  {
+    "id": 8,
+    "name": "Becks Blue",
+    "imageFile": "08-becks-blue.png",
+    "bundledImage": null
+  },
+  {
+    "id": 9,
+    "name": "Birra Moretti Zero Alcohol Free Beer Bottles",
+    "imageFile": "09-birra-moretti-zero-alcohol-free-beer-bottles.png",
+    "bundledImage": null
+  },
+  {
+    "id": 10,
+    "name": "Bitburger Drive 0.0",
+    "imageFile": "10-bitburger-drive-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 11,
+    "name": "BrewDog Mixed Alcohol Free Cans 0.5%",
+    "imageFile": "11-brewdog-mixed-alcohol-free-cans-0-5.png",
+    "bundledImage": null
+  },
+  {
+    "id": 12,
+    "name": "Brinkhoff’s Zer0",
+    "imageFile": "12-brinkhoff-s-zer0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 13,
+    "name": "Budweiser Zero",
+    "imageFile": "13-budweiser-zero.png",
+    "bundledImage": null
+  },
+  {
+    "id": 14,
+    "name": "Cobra Zero",
+    "imageFile": "14-cobra-zero.png",
+    "bundledImage": null
+  },
+  {
+    "id": 15,
+    "name": "Corona Cero",
+    "imageFile": "15-corona-cero.png",
+    "bundledImage": null
+  },
+  {
+    "id": 16,
+    "name": "Daura Damm 0.0 Gluten Free",
+    "imageFile": "16-daura-damm-0-0-gluten-free.png",
+    "bundledImage": null
+  },
+  {
+    "id": 17,
+    "name": "Days 0.0% Alcohol Free Beer Lager Cans",
+    "imageFile": "17-days-0-0-alcohol-free-beer-lager-cans.png",
+    "bundledImage": null
+  },
+  {
+    "id": 18,
+    "name": "Days 0.0% Alcohol Free Beer Pale Ale Cans",
+    "imageFile": "18-days-0-0-alcohol-free-beer-pale-ale-cans.png",
+    "bundledImage": null
+  },
+  {
+    "id": 19,
+    "name": "Desperados Lemon 0.0%",
+    "imageFile": "19-desperados-lemon-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 20,
+    "name": "Drop Bear Bonfire Stout 0.5%",
+    "imageFile": "20-drop-bear-bonfire-stout-0-5.png",
+    "bundledImage": null
+  },
+  {
+    "id": 21,
+    "name": "Drop Bear Tropical IPA 0.5%",
+    "imageFile": "21-drop-bear-tropical-ipa-0-5.png",
+    "bundledImage": null
+  },
+  {
+    "id": 22,
+    "name": "Drop Bear Yuzu Pale Ale 0.5%",
+    "imageFile": "22-drop-bear-yuzu-pale-ale-0-5.png",
+    "bundledImage": null
+  },
+  {
+    "id": 23,
+    "name": "Estrella Damm 0.0%",
+    "imageFile": "23-estrella-damm-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 24,
+    "name": "Estrella Galicia 0.0% Spanish Lager 12 x 330ml beer bottles",
+    "imageFile": "24-estrella-galicia-0-0-spanish-lager-12-x-330ml-beer-bottles.png",
+    "bundledImage": null
+  },
+  {
+    "id": 25,
+    "name": "Guinness 0.0 Pint",
+    "imageFile": "25-guinness-0-0-pint.png",
+    "bundledImage": null
+  },
+  {
+    "id": 26,
+    "name": "Heineken 0.0",
+    "imageFile": "26-heineken-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 27,
+    "name": "Huyghe Paranoia Rouge 0.0",
+    "imageFile": "27-huyghe-paranoia-rouge-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 28,
+    "name": "IMPOSSIBREW Enhanced Hazy Pale",
+    "imageFile": "28-impossibrew-enhanced-hazy-pale.png",
+    "bundledImage": null
+  },
+  {
+    "id": 29,
+    "name": "IMPOSSIBREW Enhanced Lager",
+    "imageFile": "29-impossibrew-enhanced-lager.png",
+    "bundledImage": null
+  },
+  {
+    "id": 30,
+    "name": "Jiddler's Tipple All Day",
+    "imageFile": "30-jiddler-s-tipple-all-day.png",
+    "bundledImage": null
+  },
+  {
+    "id": 31,
+    "name": "Jupiler 0.0",
+    "imageFile": "31-jupiler-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 32,
+    "name": "Kaiserdom Lemon 0.0",
+    "imageFile": "32-kaiserdom-lemon-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 33,
+    "name": "Kaiserdom Pink Grapefruit 0.0",
+    "imageFile": "33-kaiserdom-pink-grapefruit-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 34,
+    "name": "Kasteel Rouge 0.0",
+    "imageFile": "34-kasteel-rouge-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 35,
+    "name": "Kasteel Tropical 0.0",
+    "imageFile": "35-kasteel-tropical-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 36,
+    "name": "Kingfisher Zero Lager 0.0",
+    "imageFile": "36-kingfisher-zero-lager-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 37,
+    "name": "Kronenbourg 1664 0.0",
+    "imageFile": "37-kronenbourg-1664-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 38,
+    "name": "La Trappe Nillis 0.0",
+    "imageFile": "38-la-trappe-nillis-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 39,
+    "name": "Leffe Blonde Belgian Alcohol-Free Lager Beer Bottles",
+    "imageFile": "39-leffe-blonde-belgian-alcohol-free-lager-beer-bottles.png",
+    "bundledImage": null
+  },
+  {
+    "id": 40,
+    "name": "Lucky Saint Alcohol Free Lager",
+    "imageFile": "40-lucky-saint-alcohol-free-lager.png",
+    "bundledImage": null
+  },
+  {
+    "id": 41,
+    "name": "Lucky Saint Lime & Sea Salt Lager",
+    "imageFile": "41-lucky-saint-lime-sea-salt-lager.png",
+    "bundledImage": null
+  },
+  {
+    "id": 42,
+    "name": "Lucky Saint Weissbier",
+    "imageFile": "42-lucky-saint-weissbier.png",
+    "bundledImage": null
+  },
+  {
+    "id": 43,
+    "name": "Madri Excepcional 0.0",
+    "imageFile": "43-madri-excepcional-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 44,
+    "name": "Mello Lime & Mint Alcohol Free 0.0% 4x330ml",
+    "imageFile": "44-mello-lime-mint-alcohol-free-0-0-4x330ml.png",
+    "bundledImage": null
+  },
+  {
+    "id": 45,
+    "name": "Mello Peach & Passionfruit, Alcohol Free 0.0%, 4x330ml",
+    "imageFile": "45-mello-peach-passionfruit-alcohol-free-0-0-4x330ml.png",
+    "bundledImage": null
+  },
+  {
+    "id": 46,
+    "name": "Nirvana Classic IPA",
+    "imageFile": "46-nirvana-classic-ipa.png",
+    "bundledImage": null
+  },
+  {
+    "id": 47,
+    "name": "Nirvana Helles Lager",
+    "imageFile": "47-nirvana-helles-lager.png",
+    "bundledImage": null
+  },
+  {
+    "id": 48,
+    "name": "Outdoor Hydration 0.0 Lager",
+    "imageFile": "48-outdoor-hydration-0-0-lager.png",
+    "bundledImage": null
+  },
+  {
+    "id": 49,
+    "name": "Peroni 0.0 Blood Orange",
+    "imageFile": "49-peroni-0-0-blood-orange.png",
+    "bundledImage": null
+  },
+  {
+    "id": 50,
+    "name": "Peroni 0.0 Lemon",
+    "imageFile": "50-peroni-0-0-lemon.png",
+    "bundledImage": null
+  },
+  {
+    "id": 51,
+    "name": "Peroni Nastro Azzurro 0.0%",
+    "imageFile": "51-peroni-nastro-azzurro-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 52,
+    "name": "Sharp’s Doom Bar 0.0",
+    "imageFile": "52-sharp-s-doom-bar-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 53,
+    "name": "Staropramen 0.0",
+    "imageFile": "53-staropramen-0-0.png",
+    "bundledImage": null
+  },
+  {
+    "id": 54,
+    "name": "Stella Artois 0.0% Alcohol-Free Lager Beer Cans",
+    "imageFile": "54-stella-artois-0-0-alcohol-free-lager-beer-cans.png",
+    "bundledImage": null
+  },
+  {
+    "id": 55,
+    "name": "Super Bock 0.0 Pilsner",
+    "imageFile": "55-super-bock-0-0-pilsner.png",
+    "bundledImage": null
+  },
+  {
+    "id": 56,
+    "name": "Veltins 0.0 Pilsner",
+    "imageFile": "56-veltins-0-0-pilsner.png",
+    "bundledImage": null
+  },
+  {
+    "id": 57,
+    "name": "Warsteiner Premium Fresh 0.0",
+    "imageFile": "57-warsteiner-premium-fresh-0-0.png",
+    "bundledImage": null
+  }
+]
