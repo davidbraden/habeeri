@@ -6,7 +6,8 @@ import type { Beer } from './types/beer';
 type FilterMode = 'all' | 'tried' | 'untried';
 
 const ratingStars = [1, 2, 3, 4, 5];
-const storageKey = 'null-pint-beer-logs';
+const storageKey = 'habeeri-beer-logs';
+const legacyStorageKey = ['null', 'pint', 'beer', 'logs'].join('-');
 
 const loadBeers = (): Beer[] => {
   if (typeof window === 'undefined') {
@@ -14,7 +15,8 @@ const loadBeers = (): Beer[] => {
   }
 
   try {
-    const rawValue = window.localStorage.getItem(storageKey);
+    const rawValue =
+      window.localStorage.getItem(storageKey) ?? window.localStorage.getItem(legacyStorageKey);
 
     if (!rawValue) {
       return sampleBeers;
@@ -43,6 +45,7 @@ export default function App() {
   useEffect(() => {
     const logs = Object.fromEntries(beers.map((beer) => [beer.id, beer.log]));
     window.localStorage.setItem(storageKey, JSON.stringify(logs));
+    window.localStorage.removeItem(legacyStorageKey);
   }, [beers]);
 
   const filteredBeers = useMemo(() => {
@@ -224,7 +227,7 @@ export default function App() {
         <header className="top-bar">
           <div>
             <p className="eyebrow">Alcohol-free tracker</p>
-            <h1 className="page-title">Null Pint</h1>
+            <h1 className="page-title">Habeeri</h1>
           </div>
           <p className="results-text">
             {filteredBeers.length} beer{filteredBeers.length === 1 ? '' : 's'}

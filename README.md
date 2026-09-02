@@ -1,4 +1,4 @@
-# Null Pint
+# Habeeri
 
 A browser-based zero alcohol beer tracker.
 
@@ -32,7 +32,7 @@ One-time setup:
 
 1. Create a Pages project with `main` as its production branch. With Wrangler:
    - `npx wrangler@4 login`
-   - `npx wrangler@4 pages project create null-pint --production-branch main`
+   - `npx wrangler@4 pages project create habeeri --production-branch main`
 2. In Cloudflare, create a custom API token with `Account > Cloudflare Pages >
    Edit` permission, restricted to the account that owns the Pages project.
 3. In the GitHub repository, open **Settings > Secrets and variables > Actions**
@@ -41,7 +41,7 @@ One-time setup:
      overview.
    - `CLOUDFLARE_API_TOKEN`: the token created in the previous step.
 4. On the **Variables** tab in the same GitHub screen, add
-   `CLOUDFLARE_PAGES_PROJECT_NAME` with the project name (`null-pint` in the
+   `CLOUDFLARE_PAGES_PROJECT_NAME` with the project name (`habeeri` in the
    example above).
 5. Push to `main`, then follow the deployment URL in the workflow summary.
 
