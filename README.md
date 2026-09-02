@@ -24,26 +24,22 @@ A browser-based zero alcohol beer tracker.
 
 ## Deploy to Cloudflare Pages
 
-The GitHub Actions workflow in `.github/workflows/deploy-pages.yml` type-checks
-and builds every pull request into `dist`. A push to `main`, or a manually
-dispatched run, also uploads `dist` to a Cloudflare Pages Direct Upload project.
+Cloudflare Pages builds and deploys the site through its GitHub integration. No
+GitHub Actions workflow or Cloudflare API token is required.
 
 One-time setup:
 
-1. Create a Pages project with `main` as its production branch. With Wrangler:
-   - `npx wrangler@4 login`
-   - `npx wrangler@4 pages project create habeeri --production-branch main`
-2. In Cloudflare, create a custom API token with `Account > Cloudflare Pages >
-   Edit` permission, restricted to the account that owns the Pages project.
-3. In the GitHub repository, open **Settings > Secrets and variables > Actions**
-   and add these repository secrets:
-   - `CLOUDFLARE_ACCOUNT_ID`: the account ID shown in Cloudflare's account
-     overview.
-   - `CLOUDFLARE_API_TOKEN`: the token created in the previous step.
-4. On the **Variables** tab in the same GitHub screen, add
-   `CLOUDFLARE_PAGES_PROJECT_NAME` with the project name (`habeeri` in the
-   example above).
-5. Push to `main`, then follow the deployment URL in the workflow summary.
+1. Push the repository to GitHub.
+2. In Cloudflare, open **Workers & Pages > Create application > Pages > Connect
+   to Git** and authorize access to the GitHub repository.
+3. Configure the project with:
+   - Production branch: `main`
+   - Framework preset: `Vite`
+   - Build command: `pnpm build`
+   - Build output directory: `dist`
+   - Root directory: `/`
+4. Select **Save and Deploy**. Later pushes to `main` create production
+   deployments, while pull requests receive preview deployments.
 
 To use a custom domain, open the Pages project in Cloudflare, select **Custom
 domains > Set up a custom domain**, and follow the DNS prompts. No repository
