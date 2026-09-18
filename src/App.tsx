@@ -9,6 +9,23 @@ const ratingStars = [1, 2, 3, 4, 5];
 const storageKey = 'habeeri-beer-logs';
 const legacyStorageKey = ['null', 'pint', 'beer', 'logs'].join('-');
 
+const selectedBeerIdFromLocation = (): string | null => {
+  if (typeof window === 'undefined') return null;
+  return new URLSearchParams(window.location.search).get('beer');
+};
+
+const updateBeerHistory = (beerId: string | null, mode: 'push' | 'replace') => {
+  const url = new URL(window.location.href);
+
+  if (beerId) {
+    url.searchParams.set('beer', beerId);
+  } else {
+    url.searchParams.delete('beer');
+  }
+
+  window.history[`${mode}State`]({ habeeri: true, beerId }, '', `${url.pathname}${url.search}${url.hash}`);
+};
+
 const loadBeers = (): Beer[] => {
   if (typeof window === 'undefined') {
     return sampleBeers;
@@ -37,7 +54,7 @@ export default function App() {
   const [beers, setBeers] = useState<Beer[]>(() => loadBeers());
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState<FilterMode>('all');
-  const [selectedBeerId, setSelectedBeerId] = useState<string | null>(null);
+  const [selectedBeerId, setSelectedBeerId] = useState<string | null>(() => selectedBeerIdFromLocation());
   const [onlyRated, setOnlyRated] = useState(false);
 
   const selectedBeer = beers.find((beer) => beer.id === selectedBeerId) ?? null;
@@ -47,6 +64,13 @@ export default function App() {
     window.localStorage.setItem(storageKey, JSON.stringify(logs));
     window.localStorage.removeItem(legacyStorageKey);
   }, [beers]);
+
+  useEffect(() => {
+    const handlePopState = () => setSelectedBeerId(selectedBeerIdFromLocation());
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   const filteredBeers = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -74,11 +98,26 @@ export default function App() {
     );
   };
 
+  const selectBeer = (beerId: string) => {
+    updateBeerHistory(beerId, 'push');
+    setSelectedBeerId(beerId);
+  };
+
+  const returnToBeers = () => {
+    if (window.history.state?.habeeri && window.history.state.beerId) {
+      window.history.back();
+      return;
+    }
+
+    updateBeerHistory(null, 'push');
+    setSelectedBeerId(null);
+  };
+
   if (selectedBeer) {
     return (
       <main className="app-shell">
         <section className="page page--detail">
-          <button type="button" className="back-button" onClick={() => setSelectedBeerId(null)}>
+          <button type="button" className="back-button" onClick={returnToBeers}>
             ← Back to beers
           </button>
 
@@ -278,7 +317,7 @@ export default function App() {
         {filteredBeers.length > 0 ? (
           <section className="beer-grid">
             {filteredBeers.map((beer) => (
-              <BeerCard key={beer.id} beer={beer} onSelect={() => setSelectedBeerId(beer.id)} />
+              <BeerCard key={beer.id} beer={beer} onSelect={() => selectBeer(beer.id)} />
             ))}
           </section>
         ) : (
