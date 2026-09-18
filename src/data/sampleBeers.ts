@@ -1,6 +1,6 @@
 import catalog from './catalog/zeroBeersCatalog.json';
-import { retailerByName, retailerForSourceUrl } from './retailers';
-import type { Beer } from '../types/beer';
+import { isSupermarketRetailer, retailerById, retailerByName, retailerForSourceUrl } from './retailers';
+import type { Beer, BeerRetailerListing } from '../types/beer';
 
 type CatalogBeerRecord = {
   id: number;
@@ -13,6 +13,7 @@ type CatalogBeerRecord = {
   imageUrl: string;
   sourceUrl: string;
   retailer: string;
+  retailers?: BeerRetailerListing[];
   availability: string;
   imageFile: string;
 };
@@ -54,30 +55,52 @@ const slugify = (value: string) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
-export const sampleBeers: Beer[] = (catalog as CatalogBeerRecord[]).map((beer) => {
-  const id = `${beer.id}-${slugify(beer.imageFile.replace(/\.(png|jpe?g)$/i, ''))}`;
+const supermarketDescription = (description: string) =>
+  description.replace(
+    / is listed by .+? as an alcohol-free or no\/low beer available in the UK\.$/,
+    ' is an alcohol-free or low-alcohol beer available from UK supermarkets.',
+  );
 
-  return {
-    id,
-    numericId: beer.id,
-    name: beer.name,
-    brewery: beer.brand,
-    style: beer.style,
-    abv: beer.abv,
-    package: beer.package,
-    description: beer.description,
-    imageUrl: beer.imageUrl,
-    localImage: beerImages.get(beer.imageFile) ?? null,
-    sourceUrl: beer.sourceUrl,
-    retailer: beer.retailer,
-    retailerId:
-      (retailerForSourceUrl(beer.sourceUrl) ?? retailerByName(beer.retailer))?.id ?? '',
-    availability: beer.availability,
-    imageFile: beer.imageFile,
-    log: starterLogs[id] ?? {
-      drunk: false,
-      rating: 0,
-      comment: '',
-    },
-  };
-});
+export const sampleBeers: Beer[] = (catalog as CatalogBeerRecord[])
+  .map((beer): Beer | null => {
+    const primaryRetailer = retailerForSourceUrl(beer.sourceUrl) ?? retailerByName(beer.retailer);
+    const retailerListings = beer.retailers ?? (primaryRetailer ? [{
+      retailerId: primaryRetailer.id,
+      retailer: beer.retailer,
+      sourceUrl: beer.sourceUrl,
+      availability: beer.availability,
+      package: beer.package,
+    }] : []);
+    const supermarketListing = retailerListings.find((listing) => isSupermarketRetailer(listing.retailerId));
+
+    if (!supermarketListing) return null;
+
+    const supermarket = retailerById(supermarketListing.retailerId);
+    if (!supermarket) return null;
+
+    const id = `${beer.id}-${slugify(beer.imageFile.replace(/\.(png|jpe?g)$/i, ''))}`;
+
+    return {
+      id,
+      numericId: beer.id,
+      name: beer.name,
+      brewery: beer.brand,
+      style: beer.style,
+      abv: beer.abv,
+      package: supermarketListing.package || beer.package,
+      description: supermarketDescription(beer.description),
+      imageUrl: beer.imageUrl,
+      localImage: beerImages.get(beer.imageFile) ?? null,
+      sourceUrl: supermarketListing.sourceUrl,
+      retailer: supermarket.name,
+      retailerId: supermarket.id,
+      availability: supermarketListing.availability || beer.availability,
+      imageFile: beer.imageFile,
+      log: starterLogs[id] ?? {
+        drunk: false,
+        rating: 0,
+        comment: '',
+      },
+    };
+  })
+  .filter((beer): beer is Beer => beer !== null);

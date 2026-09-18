@@ -1,10 +1,19 @@
 export type Retailer = {
   id: string;
   name: string;
+  kind: 'specialist' | 'supermarket';
   website: string;
   host: string;
   country: string;
   description: string;
+};
+
+export type BeerRetailerListing = {
+  retailerId: string;
+  retailer: string;
+  sourceUrl: string;
+  availability: string;
+  package: string;
 };
 
 export type BeerCatalogItem = {
