@@ -334,7 +334,7 @@
     "name": "Birra Moretti Zero Alcohol Free Beer Bottles",
     "brand": "Birra Moretti",
     "abv": "0.0%",
-    "style": "Beer",
+    "style": "Lager",
     "package": "bottle",
     "description": "Birra Moretti Zero Alcohol Free Beer Bottles is listed by Ocado as an alcohol-free or no/low beer available in the UK.",
     "imageUrl": "https://www.ocado.com/images-v3/eafa5127-d256-497b-9609-4869092accd6/b2a39381-9744-435f-afc1-8da18f9a61d5/500x500.jpg",
@@ -415,29 +415,6 @@
         "sourceUrl": "https://www.drydrinker.com/products/bitburger-drive-bottles-alcohol-free-lager",
         "availability": "In stock when checked",
         "package": "bottle"
-      }
-    ]
-  },
-  {
-    "name": "BrewDog Mixed Alcohol Free Cans 0.5%",
-    "brand": "BrewDog",
-    "abv": "0.5%",
-    "style": "Beer",
-    "package": "can",
-    "description": "BrewDog Mixed Alcohol Free Cans 0.5% is listed by Ocado as an alcohol-free or no/low beer available in the UK.",
-    "imageUrl": "https://www.ocado.com/images-v3/eafa5127-d256-497b-9609-4869092accd6/ce1d471f-1123-4f1b-8fe9-9d83cf11d692/500x500.jpg",
-    "sourceUrl": "https://www.ocado.com/products/578239011",
-    "retailer": "Ocado",
-    "availability": "Not seen in latest check",
-    "id": 11,
-    "imageFile": "11-brewdog-mixed-alcohol-free-cans-0-5.png",
-    "retailers": [
-      {
-        "retailerId": "ocado",
-        "retailer": "Ocado",
-        "sourceUrl": "https://www.ocado.com/products/578239011",
-        "availability": "Not seen in latest check",
-        "package": "can"
       }
     ]
   },
