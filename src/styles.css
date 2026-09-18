@@ -143,6 +143,14 @@ a {
   margin: 16px 0;
 }
 
+.category-filter {
+  margin-top: 16px;
+}
+
+.filter-row--categories {
+  margin: 8px 0 0;
+}
+
 .filter-chip,
 .back-button,
 .star-button {

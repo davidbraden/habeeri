@@ -4,10 +4,25 @@ import { sampleBeers } from './data/sampleBeers';
 import type { Beer } from './types/beer';
 
 type FilterMode = 'all' | 'tried' | 'untried';
+type CategoryFilter = 'all' | 'lager' | 'ipa' | 'fruit' | 'ale' | 'wheat' | 'stout';
 
 const ratingStars = [1, 2, 3, 4, 5];
 const storageKey = 'habeeri-beer-logs';
 const legacyStorageKey = ['null', 'pint', 'beer', 'logs'].join('-');
+
+const categoryFilters: ReadonlyArray<{
+  id: CategoryFilter;
+  label: string;
+  styles: readonly string[];
+}> = [
+  { id: 'all', label: 'All categories', styles: [] },
+  { id: 'lager', label: 'Lager', styles: ['Lager', 'Pilsner'] },
+  { id: 'ipa', label: 'IPA', styles: ['IPA', 'Hazy IPA', 'Pale ale', 'Hazy pale ale'] },
+  { id: 'fruit', label: 'Fruit & flavoured', styles: ['Flavoured beer', 'Fruit beer', 'Radler'] },
+  { id: 'ale', label: 'Ale', styles: ['Ale'] },
+  { id: 'wheat', label: 'Wheat beer', styles: ['Wheat beer'] },
+  { id: 'stout', label: 'Stout', styles: ['Stout'] },
+];
 
 const selectedBeerIdFromLocation = (): string | null => {
   if (typeof window === 'undefined') return null;
@@ -54,6 +69,7 @@ export default function App() {
   const [beers, setBeers] = useState<Beer[]>(() => loadBeers());
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState<FilterMode>('all');
+  const [category, setCategory] = useState<CategoryFilter>('all');
   const [selectedBeerId, setSelectedBeerId] = useState<string | null>(() => selectedBeerIdFromLocation());
   const [onlyRated, setOnlyRated] = useState(false);
 
@@ -74,6 +90,7 @@ export default function App() {
 
   const filteredBeers = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
+    const categoryStyles = categoryFilters.find(({ id }) => id === category)?.styles ?? [];
 
     return beers.filter((beer) => {
       const matchesQuery =
@@ -87,10 +104,11 @@ export default function App() {
         filter === 'all' || (filter === 'tried' ? beer.log.drunk : !beer.log.drunk);
 
       const matchesRated = !onlyRated || beer.log.rating > 0;
+      const matchesCategory = category === 'all' || categoryStyles.includes(beer.style);
 
-      return matchesQuery && matchesFilter && matchesRated;
+      return matchesQuery && matchesFilter && matchesRated && matchesCategory;
     });
-  }, [beers, filter, onlyRated, query]);
+  }, [beers, category, filter, onlyRated, query]);
 
   const updateBeer = (updatedBeer: Beer) => {
     setBeers((currentBeers) =>
@@ -302,6 +320,27 @@ export default function App() {
                 </button>
               );
             })}
+          </div>
+
+          <div className="category-filter" role="group" aria-label="Filter by category">
+            <span className="field-label">Category</span>
+            <div className="filter-row filter-row--categories">
+              {categoryFilters.map((option) => {
+                const active = option.id === category;
+
+                return (
+                  <button
+                    key={option.id}
+                    type="button"
+                    className={`filter-chip ${active ? 'filter-chip--active' : ''}`}
+                    aria-pressed={active}
+                    onClick={() => setCategory(option.id)}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           <label className="switch switch--inline">
