@@ -323,9 +323,9 @@ export default function App() {
   return (
     <main className="app-shell">
       <section className="page">
-        <header className="top-bar">
-          <div>
-            <p className="eyebrow">Alcohol-free tracker</p>
+        <header className="top-bar top-bar--catalogue">
+          <div className="app-brand">
+            <span className="app-brand__mark" aria-hidden="true">H</span>
             <h1 className="page-title">Habeeri</h1>
           </div>
           <p className="results-text">
@@ -334,7 +334,7 @@ export default function App() {
         </header>
 
         <section className="controls-card">
-          <label className="field-label" htmlFor="beer-search">
+          <label className="field-label visually-hidden" htmlFor="beer-search">
             Search beers
           </label>
           <input
