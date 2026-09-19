@@ -143,14 +143,6 @@ a {
   margin: 16px 0;
 }
 
-.category-filter {
-  margin-top: 16px;
-}
-
-.filter-row--categories {
-  margin: 8px 0 0;
-}
-
 .filter-chip,
 .back-button,
 .star-button {
@@ -170,15 +162,61 @@ a {
   color: #ffffff;
 }
 
+.filters-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 4px;
+  padding: 13px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #374151;
+  font-weight: 700;
+}
+
+.filters-trigger:hover,
+.filters-trigger:focus-visible {
+  border-color: #9ca3af;
+  outline: none;
+}
+
+.filters-trigger:focus-visible {
+  box-shadow: 0 0 0 3px #fef3c7;
+}
+
+.filters-trigger__label,
+.filters-trigger__summary,
+.filter-sheet__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filters-trigger__summary {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.filters-trigger__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #111827;
+  color: #ffffff;
+  font-size: 0.75rem;
+}
+
 .switch {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   font-weight: 600;
-}
-
-.switch--inline {
-  margin-top: 4px;
 }
 
 .beer-grid {
@@ -382,6 +420,141 @@ a {
   margin-top: 20px;
 }
 
+.filter-sheet-backdrop {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(17, 24, 39, 0.42);
+}
+
+.filter-sheet {
+  width: min(600px, 100%);
+  max-height: min(80vh, 640px);
+  overflow: auto;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 -12px 44px rgba(15, 23, 42, 0.24);
+}
+
+.filter-sheet__handle {
+  width: 40px;
+  height: 4px;
+  margin: 10px auto 0;
+  border-radius: 999px;
+  background: #d1d5db;
+}
+
+.filter-sheet__header,
+.filter-sheet__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+}
+
+.filter-sheet__header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.text-button,
+.close-button {
+  border: 0;
+  background: transparent;
+  color: #374151;
+  font-weight: 700;
+}
+
+.text-button {
+  padding: 8px;
+}
+
+.close-button {
+  display: inline-grid;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  place-items: center;
+  border-radius: 50%;
+  background: #f3f4f6;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.filter-sheet__content {
+  display: grid;
+  gap: 24px;
+  padding: 4px 20px 20px;
+}
+
+.filter-sheet__group {
+  display: grid;
+  gap: 10px;
+}
+
+.filter-sheet__label {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.filter-sheet__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-sheet__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+}
+
+.filter-sheet__toggle span {
+  display: grid;
+  gap: 2px;
+}
+
+.filter-sheet__toggle small {
+  color: #6b7280;
+}
+
+.filter-sheet__toggle input {
+  width: 20px;
+  height: 20px;
+  accent-color: #111827;
+}
+
+.filter-sheet__footer {
+  position: sticky;
+  bottom: 0;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.filter-sheet__apply {
+  width: 100%;
+  border: 0;
+  border-radius: 14px;
+  padding: 14px 16px;
+  background: #111827;
+  color: #ffffff;
+  font-weight: 800;
+}
+
 @media (min-width: 860px) {
   .page--detail {
     grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.8fr);
@@ -426,5 +599,21 @@ a {
 
   .results-text {
     justify-self: start;
+  }
+
+  .filters-trigger__summary {
+    max-width: 56%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .filter-sheet-backdrop {
+    padding: 0;
+  }
+
+  .filter-sheet {
+    max-height: 85vh;
+    border-radius: 24px 24px 0 0;
   }
 }

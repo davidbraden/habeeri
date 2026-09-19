@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { BeerCard } from './components/BeerCard';
 import { sampleBeers } from './data/sampleBeers';
 import type { Beer } from './types/beer';
@@ -72,6 +72,9 @@ export default function App() {
   const [category, setCategory] = useState<CategoryFilter>('all');
   const [selectedBeerId, setSelectedBeerId] = useState<string | null>(() => selectedBeerIdFromLocation());
   const [onlyRated, setOnlyRated] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const filterTriggerRef = useRef<HTMLButtonElement>(null);
+  const filterSheetRef = useRef<HTMLElement>(null);
 
   const selectedBeer = beers.find((beer) => beer.id === selectedBeerId) ?? null;
 
@@ -87,6 +90,28 @@ export default function App() {
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
+
+  useEffect(() => {
+    if (!filtersOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setFiltersOpen(false);
+        filterTriggerRef.current?.focus();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    filterSheetRef.current?.querySelector<HTMLButtonElement>('button')?.focus();
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [filtersOpen]);
 
   const filteredBeers = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -109,6 +134,23 @@ export default function App() {
       return matchesQuery && matchesFilter && matchesRated && matchesCategory;
     });
   }, [beers, category, filter, onlyRated, query]);
+
+  const activeFilterLabels = [
+    ...(category === 'all'
+      ? []
+      : [categoryFilters.find(({ id }) => id === category)?.label ?? 'Category']),
+    ...(onlyRated ? ['Rated'] : []),
+  ];
+
+  const resetFilters = () => {
+    setCategory('all');
+    setOnlyRated(false);
+  };
+
+  const closeFilters = () => {
+    setFiltersOpen(false);
+    filterTriggerRef.current?.focus();
+  };
 
   const updateBeer = (updatedBeer: Beer) => {
     setBeers((currentBeers) =>
@@ -322,35 +364,30 @@ export default function App() {
             })}
           </div>
 
-          <div className="category-filter" role="group" aria-label="Filter by category">
-            <span className="field-label">Category</span>
-            <div className="filter-row filter-row--categories">
-              {categoryFilters.map((option) => {
-                const active = option.id === category;
-
-                return (
-                  <button
-                    key={option.id}
-                    type="button"
-                    className={`filter-chip ${active ? 'filter-chip--active' : ''}`}
-                    aria-pressed={active}
-                    onClick={() => setCategory(option.id)}
-                  >
-                    {option.label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          <label className="switch switch--inline">
-            <input
-              type="checkbox"
-              checked={onlyRated}
-              onChange={(event) => setOnlyRated(event.target.checked)}
-            />
-            <span>Only rated</span>
-          </label>
+          <button
+            ref={filterTriggerRef}
+            type="button"
+            className="filters-trigger"
+            aria-expanded={filtersOpen}
+            aria-haspopup="dialog"
+            onClick={() => setFiltersOpen(true)}
+          >
+            <span className="filters-trigger__label">
+              <span aria-hidden="true">☷</span>
+              Filters
+            </span>
+            <span className="filters-trigger__summary">
+              {activeFilterLabels.length > 0 ? (
+                <>
+                  <span className="filters-trigger__count">{activeFilterLabels.length}</span>
+                  <span>{activeFilterLabels.join(' · ')}</span>
+                </>
+              ) : (
+                'Any category'
+              )}
+              <span aria-hidden="true">›</span>
+            </span>
+          </button>
         </section>
 
         {filteredBeers.length > 0 ? (
@@ -364,6 +401,83 @@ export default function App() {
             <h2 className="section-title">No beers match right now</h2>
             <p className="section-hint">Try clearing the search or relaxing the filters.</p>
           </section>
+        )}
+
+        {filtersOpen && (
+          <div className="filter-sheet-backdrop" onMouseDown={closeFilters}>
+            <section
+              className="filter-sheet"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="filter-sheet-title"
+              ref={filterSheetRef}
+              onMouseDown={(event) => event.stopPropagation()}
+            >
+              <div className="filter-sheet__handle" aria-hidden="true" />
+              <header className="filter-sheet__header">
+                <h2 id="filter-sheet-title">Filters</h2>
+                <div className="filter-sheet__actions">
+                  {activeFilterLabels.length > 0 && (
+                    <button type="button" className="text-button" onClick={resetFilters}>
+                      Reset
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    className="close-button"
+                    aria-label="Close filters"
+                    onClick={closeFilters}
+                  >
+                    ×
+                  </button>
+                </div>
+              </header>
+
+              <div className="filter-sheet__content">
+                <section className="filter-sheet__group" aria-labelledby="category-filter-title">
+                  <h3 id="category-filter-title" className="filter-sheet__label">Category</h3>
+                  <div className="filter-sheet__chips">
+                    {categoryFilters.map((option) => {
+                      const active = option.id === category;
+
+                      return (
+                        <button
+                          key={option.id}
+                          type="button"
+                          className={`filter-chip ${active ? 'filter-chip--active' : ''}`}
+                          aria-pressed={active}
+                          onClick={() => setCategory(option.id)}
+                        >
+                          {option.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </section>
+
+                <section className="filter-sheet__group" aria-labelledby="other-filter-title">
+                  <h3 id="other-filter-title" className="filter-sheet__label">Other</h3>
+                  <label className="filter-sheet__toggle">
+                    <span>
+                      <strong>Only rated</strong>
+                      <small>Show beers you have rated</small>
+                    </span>
+                    <input
+                      type="checkbox"
+                      checked={onlyRated}
+                      onChange={(event) => setOnlyRated(event.target.checked)}
+                    />
+                  </label>
+                </section>
+              </div>
+
+              <footer className="filter-sheet__footer">
+                <button type="button" className="filter-sheet__apply" onClick={closeFilters}>
+                  Show {filteredBeers.length} beer{filteredBeers.length === 1 ? '' : 's'}
+                </button>
+              </footer>
+            </section>
+          </div>
         )}
       </section>
     </main>
