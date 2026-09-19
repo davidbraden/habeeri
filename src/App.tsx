@@ -4,7 +4,7 @@ import { sampleBeers } from './data/sampleBeers';
 import type { Beer } from './types/beer';
 
 type FilterMode = 'all' | 'tried' | 'untried';
-type CategoryFilter = 'all' | 'lager' | 'ipa' | 'fruit' | 'ale' | 'wheat' | 'stout';
+type CategoryFilter = 'all' | 'lager' | 'ipa' | 'fruit' | 'wheat' | 'stout';
 
 const ratingStars = [1, 2, 3, 4, 5];
 const storageKey = 'habeeri-beer-logs';
@@ -19,7 +19,6 @@ const categoryFilters: ReadonlyArray<{
   { id: 'lager', label: 'Lager', styles: ['Lager', 'Pilsner'] },
   { id: 'ipa', label: 'IPA', styles: ['IPA', 'Hazy IPA', 'Pale ale', 'Hazy pale ale'] },
   { id: 'fruit', label: 'Fruit & flavoured', styles: ['Flavoured beer', 'Fruit beer', 'Radler'] },
-  { id: 'ale', label: 'Ale', styles: ['Ale'] },
   { id: 'wheat', label: 'Wheat beer', styles: ['Wheat beer'] },
   { id: 'stout', label: 'Stout', styles: ['Stout'] },
 ];
