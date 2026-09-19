@@ -260,13 +260,17 @@ export default function App() {
                       key={star}
                       type="button"
                       className={`star-button ${active ? 'star-button--active' : ''}`}
-                      aria-label={`Rate ${selectedBeer.name} ${star} star${star === 1 ? '' : 's'}`}
+                      aria-label={
+                        selectedBeer.log.rating === star
+                          ? `Remove ${star}-star rating for ${selectedBeer.name}`
+                          : `Rate ${selectedBeer.name} ${star} star${star === 1 ? '' : 's'}`
+                      }
                       onClick={() =>
                         updateBeer({
                           ...selectedBeer,
                           log: {
                             ...selectedBeer.log,
-                            rating: star,
+                            rating: selectedBeer.log.rating === star ? 0 : star,
                           },
                         })
                       }
